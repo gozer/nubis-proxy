@@ -3,16 +3,8 @@
   {
     "type": "shell",
     "inline": [
-        "sudo chmod 755 /etc/puppet",
-        "sudo mkdir /etc/puppet/modules/squid3",
-        "sudo chmod 777 /etc/puppet/modules/squid3"
+        "sudo chmod 755 /etc/puppet"
     ],
-    "order": "1"
-  },
-  {
-    "type": "file",
-    "source": "nubis/puppet/modules/puppet-squid3/",
-    "destination": "/etc/puppet/modules/squid3",
     "order": "1"
   },
   {
@@ -24,7 +16,6 @@
   {
     "type": "shell",
     "inline": [
-        "sudo chmod 755 /etc/puppet/modules/squid3",
         "sudo mv /tmp/migrate.sh /etc/nubis.d/migrate",
         "sudo chown 0:0 /etc/nubis.d/migrate",
         "sudo chmod 755 /etc/nubis.d/migrate"
