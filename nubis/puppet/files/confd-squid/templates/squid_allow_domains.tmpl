@@ -1,0 +1,1 @@
+{{range $value := jsonArray (getv "/config/AllowDomains")}}{{printf "%s\n" $value}}{{end}}

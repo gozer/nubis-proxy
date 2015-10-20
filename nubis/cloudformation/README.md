@@ -7,7 +7,7 @@ Before you deploy with Cloudformation you need to set up your parameters.json fi
 [
   {
     "ParameterKey": "ServiceName",
-    "ParameterValue": "skel"
+    "ParameterValue": "nubis-proxy"
   }, 
   {
     "ParameterKey": "Environment",
@@ -24,6 +24,10 @@ Before you deploy with Cloudformation you need to set up your parameters.json fi
   {
     "ParameterKey": "AmiId",
     "ParameterValue": "ami-abcdef123"
+  },
+  {
+    "ParameterKey": "StacksVersion",
+    "ParameterValue": "v1.0.0"
   }
 ]
 ``` 
@@ -46,14 +50,13 @@ You will collect this as output from nubis-builder. Once the build is complete n
 ## Commands to work with CloudFormation
 NOTE: All examples run from the top level project directory.
 
-In these examples the stack is called *nubis-skel*. You will need to choose a unique name for your stack as their can only be one *nubis-skel* stack at a time.
+In these examples the stack is called *nubis-proxy*. You will need to choose a unique name for your stack as their can only be one *nubis-proxy* stack at a time.
 
 ##### Set up
 Start by setting the profile and region, NOTE: If you have not set up any profiles set this to '*default*'. These commands assume that you have set up your profile names the same as the account names.
 ```bash
-PROFILE='mozilla-sandbox'; REGION='us-east-1'; ENVIRONMENT='sandbox'
+PROFILE='mozilla-sandbox'; REGION='us-east-1'; ENVIRONMENT='sandbox'; STACK_NAME='nubis-proxy'
 ```
-PROFILE='nubis-lab'; REGION='us-east-1'; ENVIRONMENT='stage'; STACK_NAME='nubis-skel'
 
 ### Create
 To create a new stack:
