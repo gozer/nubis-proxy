@@ -1,1 +1,1 @@
-{{range $value := jsonArray (getv "/config/DenySubnets")}}{{printf "%s\n" $value}}{{end}}
+{{ if exists "/config/DenySubnets" }}{{range $value := jsonArray (getv "/config/DenySubnets")}}{{printf "%s\n" $value}}{{end}}{{ else }}all{{end}}

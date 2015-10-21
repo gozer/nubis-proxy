@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Skeleton deployment for the nubis project.",
+  "Description": "Proxy deployment for the nubis project.",
   "Parameters": {
     "ServiceName": {
       "Description": "Name of the service",
