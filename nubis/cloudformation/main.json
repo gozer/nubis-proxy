@@ -96,55 +96,8 @@
               },
               "InstanceType"
             ]
-          },
-          "ELB": {
-            "Fn::GetAtt": [
-              "ELBStack",
-              "Outputs.ELB"
-            ]
           }
         }
-      }
-    },
-    "ELBStack": {
-      "Type": "AWS::CloudFormation::Stack",
-      "Properties": {
-        "TemplateURL": {
-          "Fn::Join": [
-            "/",
-            [
-              "https://s3.amazonaws.com/nubis-stacks",
-              {
-                "Ref": "StacksVersion"
-              },
-              "elb.template"
-            ]
-          ]
-        },
-        "TimeoutInMinutes": "60",
-        "Parameters": {
-          "ServiceName": {
-            "Ref": "ServiceName"
-          },
-          "TechnicalOwner": {
-            "Ref": "TechnicalOwner"
-          },
-          "Environment": {
-            "Ref": "Environment"
-          },
-          "ElbHealthTarget": "HTTP:80/"
-        }
-      }
-    }
-  },
-  "Outputs": {
-    "ELBDNSName": {
-      "Description": "Consul: / ELB CNAME",
-      "Value": {
-        "Fn::GetAtt": [
-          "ELBStack",
-          "Outputs.DNSName"
-        ]
       }
     }
   }
