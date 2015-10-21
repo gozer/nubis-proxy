@@ -1,26 +1,5 @@
 {
 "provisioners": [
-  {
-    "type": "shell",
-    "inline": [
-        "sudo chmod 755 /etc/puppet"
-    ],
-    "order": "1"
-  },
-  {
-    "type": "file",
-    "source": "nubis/bin/migrate.sh",
-    "destination": "/tmp/migrate.sh",
-    "order": "13"
-  },
-  {
-    "type": "shell",
-    "inline": [
-        "sudo mv /tmp/migrate.sh /etc/nubis.d/migrate",
-        "sudo chown 0:0 /etc/nubis.d/migrate",
-        "sudo chmod 755 /etc/nubis.d/migrate"
-    ],
-    "order": "14"
-  }
+
 ]
 }
