@@ -1,16 +1,20 @@
 case $::osfamily {
     'RedHat': {
-        $service_name  = 'squid'
+        $service_name        = 'squid'
+        $use_deprecated_opts = true
     }
     'Debian', 'Ubuntu': {
-        $service_name  = 'squid3'
+        $service_name        = 'squid3'
+        $use_deprecated_opts = false
     }
     default: {
-        $service_name  = 'squid'
+        $service_name        = 'squid'
+        $use_deprecated_opts = false
     }
 }
 
 class { '::squid3':
+    use_deprecated_opts => $use_deprecated_opts,
     ssl_ports => [
         '443         # https',
         '873         # rsync',

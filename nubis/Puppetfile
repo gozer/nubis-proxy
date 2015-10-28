@@ -2,5 +2,5 @@ forge "https://forgeapi.puppetlabs.com"
 
 mod 'tinnightcap/puppet-squid3',
     :git => 'https://github.com/tinnightcap/puppet-squid3.git',
-    :ref => '7ebcce40a3a57736ea8baf0377072bb6d4ba05ab'
+    :ref => '9e778ffca2f07d034717da29715e01def7712430'
 
