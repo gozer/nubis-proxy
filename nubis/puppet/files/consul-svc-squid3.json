@@ -2,7 +2,7 @@
   "service": {
     "check": {
       "interval": "10s",
-      "script": "/usr/sbin/squid -k check"
+      "script": "/usr/sbin/squid3 -k check"
     },
     "port": 3128,
     "tags": [

@@ -3,11 +3,11 @@
     "automatic_version_bump": "1",
     "automatic_version_verify": "1",
     "builders": [
-      "amazon-ebs-ubuntu"
+      "amazon-ebs-amazon-linux"
     ],
     "project_description": "Project to build and maintain outbound proxies.",
     "project_name": "nubis-proxy",
-    "project_version": "0.31",
+    "project_version": "0.46",
     "source_ami_project_name": "nubis-base"
   }
 }
