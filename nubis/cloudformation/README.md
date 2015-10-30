@@ -76,7 +76,7 @@ watch -n 1 "echo 'Container Stack'; aws cloudformation describe-stacks --region 
 ### Login
 If you have only one EC2 instance and your ssh keys are on the jumphost, you can login by:
 ```bash
-ssh -A -t ec2-user@jumphost.$ENVIRONMENT.$REGION.$PROFILE.nubis.allizom.org "ssh -A -t ubuntu@$(nubis-consul --region $REGION --profile $PROFILE --stack-name $STACK_NAME --settings nubis/cloudformation/parameters.$REGION.json get-ec2-instance-ip)"
+ssh -A -t ec2-user@jumphost.$ENVIRONMENT.$REGION.$PROFILE.nubis.allizom.org "ssh -A -t ec2-user@$(nubis-consul --region $REGION --profile $PROFILE --stack-name $STACK_NAME --settings nubis/cloudformation/parameters.$REGION.json get-ec2-instance-ip)"
 ```
 
 ### Delete

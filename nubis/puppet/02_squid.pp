@@ -1,17 +1,4 @@
-case $::osfamily {
-    'RedHat': {
-        $service_name        = 'squid'
-        $use_deprecated_opts = true
-    }
-    'Debian', 'Ubuntu': {
-        $service_name        = 'squid3'
-        $use_deprecated_opts = false
-    }
-    default: {
-        $service_name        = 'squid'
-        $use_deprecated_opts = false
-    }
-}
+# Configure squid here, mostly using the puppet-squid module
 
 class { '::squid3':
     use_deprecated_opts => $use_deprecated_opts,
@@ -91,6 +78,12 @@ file {
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        source  => 'puppet:///nubis/files/consul-svc-squid.json';
+        source  => "puppet:///nubis/files/consul-svc-${::squid3::params::service_name}.json";
 
+}
+
+if $::osfamily == 'RedHat' {
+  exec { 'config_file_permissions':
+    command => "/bin/chmod 744 ${::squid3::params::config_file}",
+  }
 }

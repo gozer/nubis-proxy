@@ -1,4 +1,4 @@
-# nubis-proxy
+﻿# nubis-proxy
 This project is currently based around [Squid3](http://www.squid-cache.org/). As configured we are only taking advantage of the forward proxy abilities and none of the caching abilities. The default configuration is a logging only forward proxy, in other words there are no blocklists or allow lists deployed. There is a list of "safe ports" which are allowed, all others are blocked.
 
 ## Integrating
@@ -74,10 +74,32 @@ To check that the squid configuration is syntactically correct:
 ```bash
 squid3 -k check
 ```
-To test the the proxy is working at the most basic level check http and https outbound connectivity through the proxy:
+To test the the proxy is working at the most basic level check http and https outbound connectivity through the proxy. This tests the CONNECT method only:
 ```bash
 curl -s -o /dev/null -x localhost:3128 http://www.google.com; echo $?
 curl -s -o /dev/null -x localhost:3128 https://www.google.com; echo $?
+```
+
+It is possible to test the CONNECT method with telnet directly, however as it is quite difficult to speak encrypted protocols over telnet you can only see that the connection is made to the remote service. This is of limited benefit and the above curl method is a more complete test:
+```bash
+telnet localhost 3128
+CONNECT www.google.com
+```
+```bash
+telnet localhost 3128
+CONNECT github.com:9418
+```
+
+To test the GET method (asking the proxy to establish the ssl connection, whilst spying on you):
+```bash
+telnet localhost 3128
+GET http://www.google.com/404 HTTP/1.0
+HOST: proxytest
+```
+```bash
+telnet localhost 3128
+GET https://www.google.com/404 HTTP/1.0
+HOST: proxytest
 ```
 
 To ensure consul service regesteration is working correctly run this command and check that the IP of the proxy you are testing is in the returned list:
